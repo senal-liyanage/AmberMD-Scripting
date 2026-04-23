@@ -60,6 +60,12 @@ These scripts assume:
 ## Scope and limitations
 This repository is best viewed as a reusable lab-style scripting helper rather than a polished framework. The workflow reflects specific simulation assumptions, including staged restrained equilibration and membrane-oriented restraint setup, so users should review the generated input files before adopting them in a different context.
 
+## Contributing
+Focused pull requests are preferred. The most useful contributions are bug fixes, clearer usage notes, portability improvements, and workflow clarifications that preserve the repository’s lightweight scripting focus.
+
+## Citation
+If this repository contributes to published work, please cite the repository and the version used.
+
 ## License
 This project is released under the MIT License. See [`LICENSE`](LICENSE) for details.
 
