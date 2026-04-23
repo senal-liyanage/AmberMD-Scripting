@@ -1,19 +1,67 @@
-**Molecular Dynamics Simulations with AMBER**
+# AmberMD-Scripting
 
-In this repository, you'll find two shell scripts designed to perform Molecular Dynamics (MD) simulations using the AMBER suite of programs. 
+`AmberMD-Scripting` is a small collection of Bash helpers for preparing and running staged AMBER molecular dynamics workflows. The repository is aimed at practical command-line usage rather than a general-purpose software package.
 
-The first script, generate_amber_inputs.sh, creates the required input files for AMBER simulations. It enables the generation of multiple trajectories with ligand constraints specified by a range of residues. 
+## Repository contents
+### `generate_amber_inputs.sh`
+Generates a directory tree and AMBER input files for a staged membrane-oriented workflow that includes:
+- minimization
+- restrained heating
+- restrained equilibration
+- production dynamics
 
-The second script, run_md_simulations.sh, executes preproduction or production MD simulations on a specified system using the AMBER suite of programs. 
+The script builds numbered directories such as `001.min`, `002.heat`, and trajectory-specific folders like `Traj1/003.equil` and `Traj1/004.prod`.
 
-To use these scripts, follow these steps: 
+Example:
 
-1. Generate the necessary input files by running generate_amber_inputs.sh with the desired parameters: 
+```bash
+bash generate_amber_inputs.sh 101 120 3
+```
 
-_./generate_amber_inputs.sh [RESIDUE_START] [RESIDUE_END] [NUMBER_OF_TRAJECTORIES]_
+This generates inputs for 3 trajectories with ligand or residue restraints applied over residues 101 to 120.
 
-2. Run the MD simulations by executing run_md_simulations.sh with the appropriate arguments: 
+A cleanup mode is also available:
 
-_./run_md_simulations.sh [SYSTEM NAME] [CPU] [0/1] [GPU INDEX] [MD Start] [MD Stop]_
+```bash
+bash generate_amber_inputs.sh cleanup 3
+```
 
-For more detailed instructions on how to use these scripts, please refer to the comments in each script.
+### `run_md_simulations.sh`
+Runs the generated AMBER workflow in either preproduction or production mode.
+
+Example preproduction run:
+
+```bash
+bash run_md_simulations.sh system_name 16 0
+```
+
+Example production run:
+
+```bash
+bash run_md_simulations.sh system_name 16 1 0 0 5 1
+```
+
+This corresponds to:
+- `system_name` = AMBER topology/restart basename
+- `16` = number of CPU cores
+- `1` = production mode
+- `0` = GPU index
+- `0` = starting production segment
+- `5` = final production segment
+- `1` = trajectory number
+
+## Workflow assumptions
+These scripts assume:
+- an AMBER installation with `pmemd.MPI` and `pmemd.cuda`
+- an MPI launcher available as `mpirun`
+- a membrane-style workflow using the directory structure created by `generate_amber_inputs.sh`
+- topology and coordinate files such as `system_name.parm7` and `system_name.rst7`
+
+## Scope and limitations
+This repository is best viewed as a reusable lab-style scripting helper rather than a polished framework. The workflow reflects specific simulation assumptions, including staged restrained equilibration and membrane-oriented restraint setup, so users should review the generated input files before adopting them in a different context.
+
+## License
+This project is released under the MIT License. See [`LICENSE`](LICENSE) for details.
+
+## Contact
+For questions or adaptation to related workflows, see the repository owner profile: https://github.com/fr-0zt
