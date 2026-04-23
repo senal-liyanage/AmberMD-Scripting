@@ -4,7 +4,7 @@
 # run_md_simulations.sh
 # Author: Senal Liyanage
 # Affiliation: Mississippi State University
-# Contact: sdd313@msstate.edu
+# Contact: sliyanage@tougaloo.edu
 # Date: June 4, 2023
 # Description: Bash script for running MD simulations
 ###########################################################
