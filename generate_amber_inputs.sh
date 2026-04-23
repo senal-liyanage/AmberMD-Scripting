@@ -4,7 +4,7 @@
 # generate_amber_inputs.sh
 # Author: Senal Liyanage
 # Affiliation: Mississippi State University
-# Contact: sdd313@msstate.edu
+# Contact: sliyanage@tougaloo.edu
 # Date: June 4, 2023
 # Description: Bash script for generating AMBER inputs for multiple trajectories
 ###########################################################
