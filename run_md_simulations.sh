@@ -98,7 +98,7 @@ production_run() {
 
     # Production
     if [ $md_start == "0" ]; then
-        $AMBERHOME/bin/pmemd.cuda -O -p ../../$system_name.parm7 -c ../003.equil/$system_name-equil.rst -i production.in -o $system_name-md0.log -inf $system_name-md0.info -x $system_name-md0.nc -r $system_name-md0.rst
+        $AMBERHOME/bin/pmemd.cuda -O -p ../../$system_name.parm7 -c ../003.equil/$system_name-equil.4.rst -i production.in -o $system_name-md0.log -inf $system_name-md0.info -x $system_name-md0.nc -r $system_name-md0.rst
         nrun=1
     else
         nrun=$md_start
