@@ -70,4 +70,4 @@ If this repository contributes to published work, please cite the repository and
 This project is released under the MIT License. See [`LICENSE`](LICENSE) for details.
 
 ## Contact
-For questions or adaptation to related workflows, see the repository owner profile: https://github.com/fr-0zt
+For questions or adaptation to related workflows, see the [repository owner profile](https://github.com/senal-liyanage).
